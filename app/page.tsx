@@ -21,11 +21,36 @@ const cardData = {
     message: "表面だけでなく、空気や本音を静かに読み取る感受性があります。"
   },
   3: {
-    name: "女帝",
-    image: "/cards/empress.png",
-    role: "育む力",
-    message: "安心感や豊かさを生み出し、人や物事をあたたかく育てていく資質があります。"
+  name: "女帝",
+  image: "/cards/empress.png",
+  personality: {
+    catchCopy: "やわらかさと豊かさで人を包む人",
+    charm:
+      "あなたは、安心感やぬくもりを人に与えやすい人です。一緒にいるとほっとすると感じられやすく、自然体なのに華やかさもあります。",
+    daily:
+      "居心地のいい空間を作るのが得意だったり、人の変化によく気づいたりします。好きなものを大事に育てる感覚があり、美しいものや心地よいものに惹かれやすいでしょう。",
+    love:
+      "恋愛では、愛情深く相手を包み込むような優しさが出やすいです。好きな人のために尽くせる反面、自分ばかり与えていないか気づくことも大切です。",
+    message:
+      "あなたの優しさは、人を満たす力でもあり、自分を満たすためにも使っていいものです。",
+    luckyWord: "豊かさ",
+    luckyItem: "好きな香りのハンドクリーム"
   },
+  soul: {
+    catchCopy: "愛と受容を育てて広げていく魂",
+    essence:
+      "あなたの魂には、命や愛を育むあたたかさがあります。誰かを癒したい、安心させたい、美しいものを大切にしたいという願いが深く流れています。",
+    theme: "与えるだけでなく、自分も受け取っていいと知ること。",
+    lifeTheme:
+      "愛されること、育てること、満ちることを通して、自分自身の価値を思い出していくこと。",
+    growth:
+      "受け取る力。心地よさや豊かさを自分に許す力。",
+    message:
+      "あなたは、頑張って価値を証明しなくても、存在そのものにあたたかさがあります。",
+    guardianWord: "わたしも受け取っていい",
+    guardianItem: "花柄のポーチ"
+  }
+},
   4: {
     name: "皇帝",
     image: "/cards/emperor.png",
@@ -232,6 +257,23 @@ function buildCombinedMessage(
   }
 
   return `外からは「${personalityCard.role}」として見られやすく、心の奥では「${soulCard.role}」を大切に育てていく人です。人から見えるあなたと、本当のあなたの間にあるその奥行きが、あなたらしい魅力になります。`;
+
+}
+function InfoRow({
+  label,
+  value,
+}: {
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="border-t border-slate-100 py-4 first:border-t-0 first:pt-0">
+      <p className="mb-1 text-xs font-semibold tracking-[0.08em] text-slate-400">
+        {label}
+      </p>
+      <p className="text-sm leading-7 text-slate-700">{value}</p>
+    </div>
+  );
 }
 
 export default function Page() {
@@ -346,16 +388,57 @@ export default function Page() {
                  className="h-[280px] w-full object-contain bg-slate-50 p-3 sm:h-[320px] md:h-[360px]"
                 />
                 <div className="p-4 sm:p-5">
-                  <h2 className="mt-1 text-xl font-bold sm:text-2xl">
-                    {result.personalityCard.name}
-                  </h2>
-                  <p className="mt-2 text-sm font-medium text-rose-700">
-                    {result.personalityCard.role}
-                  </p>
-                  <p className="mt-3 text-sm leading-6 text-slate-700 sm:leading-7">
-                    {result.personalityCard.message}
-                  </p>
-                </div>
+  <h2 className="mt-1 text-xl font-bold sm:text-2xl">
+    {result.personalityCard.name}
+  </h2>
+
+  <div className="mt-4 rounded-2xl bg-rose-50 px-4 py-3">
+    <p className="text-xs font-semibold tracking-[0.08em] text-rose-500">
+      ひとことでいうと
+    </p>
+    <p className="mt-1 text-sm font-medium leading-6 text-slate-800">
+      {result.personalityCard.personality.catchCopy}
+    </p>
+  </div>
+
+  <div className="mt-5 space-y-1">
+    <InfoRow
+      label="あなたの表に出やすい魅力"
+      value={result.personalityCard.personality.charm}
+    />
+    <InfoRow
+      label="日常で出やすい特徴"
+      value={result.personalityCard.personality.daily}
+    />
+    <InfoRow
+      label="恋愛で出やすい傾向"
+      value={result.personalityCard.personality.love}
+    />
+    <InfoRow
+      label="あなたへのひとことメッセージ"
+      value={result.personalityCard.personality.message}
+    />
+  </div>
+
+  <div className="mt-5 grid gap-3 sm:grid-cols-2">
+    <div className="rounded-2xl bg-slate-50 px-4 py-3">
+      <p className="text-xs font-semibold tracking-[0.08em] text-slate-400">
+        ラッキーワード
+      </p>
+      <p className="mt-1 text-sm font-medium text-slate-800">
+        {result.personalityCard.personality.luckyWord}
+      </p>
+    </div>
+    <div className="rounded-2xl bg-slate-50 px-4 py-3">
+      <p className="text-xs font-semibold tracking-[0.08em] text-slate-400">
+        ラッキーアイテム
+      </p>
+      <p className="mt-1 text-sm font-medium text-slate-800">
+        {result.personalityCard.personality.luckyItem}
+      </p>
+    </div>
+  </div>
+</div>
               </div>
 
               <div className={cardClass}>
@@ -373,16 +456,61 @@ export default function Page() {
                  className="h-[280px] w-full object-contain bg-slate-50 p-3 sm:h-[320px] md:h-[360px]"
                 />
                 <div className="p-4 sm:p-5">
-                  <h2 className="mt-1 text-xl font-bold sm:text-2xl">
-                    {result.soulCard.name}
-                  </h2>
-                  <p className="mt-2 text-sm font-medium text-rose-700">
-                    {result.soulCard.role}
-                  </p>
-                  <p className="mt-3 text-sm leading-6 text-slate-700 sm:leading-7">
-                    {result.soulCard.message}
-                  </p>
-                </div>
+  <h2 className="mt-1 text-xl font-bold sm:text-2xl">
+    {result.soulCard.name}
+  </h2>
+
+  <div className="mt-4 rounded-2xl bg-amber-50 px-4 py-3">
+    <p className="text-xs font-semibold tracking-[0.08em] text-amber-600">
+      ひとことでいうと
+    </p>
+    <p className="mt-1 text-sm font-medium leading-6 text-slate-800">
+      {result.soulCard.soul.catchCopy}
+    </p>
+  </div>
+
+  <div className="mt-5 space-y-1">
+    <InfoRow
+      label="心の奥にある本質"
+      value={result.soulCard.soul.essence}
+    />
+    <InfoRow
+      label="心のテーマ"
+      value={result.soulCard.soul.theme}
+    />
+    <InfoRow
+      label="人生のテーマ"
+      value={result.soulCard.soul.lifeTheme}
+    />
+    <InfoRow
+      label="この人生で育てていく力"
+      value={result.soulCard.soul.growth}
+    />
+    <InfoRow
+      label="あなたへのひとことメッセージ"
+      value={result.soulCard.soul.message}
+    />
+  </div>
+
+  <div className="mt-5 grid gap-3 sm:grid-cols-2">
+    <div className="rounded-2xl bg-slate-50 px-4 py-3">
+      <p className="text-xs font-semibold tracking-[0.08em] text-slate-400">
+        お守りワード
+      </p>
+      <p className="mt-1 text-sm font-medium text-slate-800">
+        {result.soulCard.soul.guardianWord}
+      </p>
+    </div>
+    <div className="rounded-2xl bg-slate-50 px-4 py-3">
+      <p className="text-xs font-semibold tracking-[0.08em] text-slate-400">
+        お守りアイテム
+      </p>
+      <p className="mt-1 text-sm font-medium text-slate-800">
+        {result.soulCard.soul.guardianItem}
+      </p>
+    </div>
+  </div>
+</div>
               </div>
             </div>
 
