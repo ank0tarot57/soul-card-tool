@@ -390,18 +390,15 @@ export default function Page() {
               </p>
             </div>
 
-            <div className="rounded-3xl bg-white p-4 text-xs leading-6 text-slate-500 ring-1 ring-slate-100 sm:p-5">
-              <p>
-                この診断は、Mary K. Greer の Tarot Birth Cards / Personality Card /
-                Soul Card の考え方を参考に構成しています。
-              </p>
-              <p className="mt-2">
-                表示される解釈メッセージは当サイト独自の表現です。
-              </p>
-              <p className="mt-2">
-  ※ 一部のカード画像には、amateras.blogを参考にしたパブリックドメインのRider-Waite-Smith画像を使用しています。今後、順次オリジナル画像へ差し替え予定です。
-</p>
-            </div>
+         <div className="rounded-3xl bg-white p-4 text-xs leading-6 text-slate-500 ring-1 ring-slate-100 sm:p-5">
+  <p>
+    この診断は、Mary K. Greer の Tarot Birth Cards / Personality Card / Soul Card の考え方を参考に構成しています。
+  </p>
+  <p className="mt-2">表示される解釈メッセージは当サイト独自の表現です。</p>
+  <p className="mt-2">
+    ※ 一部のカード画像には、パブリックドメインのRider-Waite-Smith画像を使用しています。引用元：amateras.blog。今後、順次オリジナル画像へ差し替え予定です。
+  </p>
+</div>ß
           </div>
         )}
       </div>
