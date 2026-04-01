@@ -172,18 +172,30 @@ function getSoulNumberFromPersonality(personalityNumber: number) {
   const reduced = sumDigits(personalityNumber);
   return toMajorArcanaNumber(reduced);
 }
-
 function calculateMaryGreerCards(dateString: string) {
-  if (!dateString || !/^\\d{4}-\\d{2}-\\d{2}$/.test(dateString)) {
+  if (!dateString) {
     return null;
   }
 
-  const [yearStr, monthStr, dayStr] = dateString.split("-");
+  const parts = dateString.split("-");
+  if (parts.length !== 3) {
+    return null;
+  }
+
+  const [yearStr, monthStr, dayStr] = parts;
   const year = Number(yearStr);
   const month = Number(monthStr);
   const day = Number(dayStr);
 
-  if (!year || !month || !day) {
+  if (
+    !Number.isInteger(year) ||
+    !Number.isInteger(month) ||
+    !Number.isInteger(day) ||
+    month < 1 ||
+    month > 12 ||
+    day < 1 ||
+    day > 31
+  ) {
     return null;
   }
 
