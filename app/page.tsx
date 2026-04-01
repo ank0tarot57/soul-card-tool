@@ -24,7 +24,7 @@ const cardData = {
   name: "女帝",
   image: "/cards/empress.png",
   personality: {
-   catchCopy: "【テスト】やわらかさと豊かさで人を包む人",
+   catchCopy: "やわらかさと豊かさで人を包む人",
     charm:
       "あなたは、安心感やぬくもりを人に与えやすい人です。一緒にいるとほっとすると感じられやすく、自然体なのに華やかさもあります。",
     daily:
