@@ -1,137 +1,136 @@
 "use client";
 
 import React, { useState } from "react";
-
 const cardData = {
   0: {
     name: "愚者",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/RWS_Tarot_00_Fool.jpg/320px-RWS_Tarot_00_Fool.jpg",
+    image: "/cards/fool.png",
     role: "自由な始まり",
     message: "枠にとらわれず、自分の感覚を信じて新しい流れへ進むエネルギーです。"
   },
   1: {
     name: "魔術師",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/RWS_Tarot_01_Magician.jpg/320px-RWS_Tarot_01_Magician.jpg",
+    image: "/cards/magician.png",
     role: "始める力",
     message: "思いつきを形にし、自分の意志で現実を動かしていく力があります。"
   },
   2: {
     name: "女教皇",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/RWS_Tarot_02_High_Priestess.jpg/320px-RWS_Tarot_02_High_Priestess.jpg",
+    image: "/cards/high-priestess.png",
     role: "感じ取る力",
     message: "表面だけでなく、空気や本音を静かに読み取る感受性があります。"
   },
   3: {
     name: "女帝",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/RWS_Tarot_03_Empress.jpg/320px-RWS_Tarot_03_Empress.jpg",
+    image: "/cards/empress.png",
     role: "育む力",
     message: "安心感や豊かさを生み出し、人や物事をあたたかく育てていく資質があります。"
   },
   4: {
     name: "皇帝",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/RWS_Tarot_04_Emperor.jpg/320px-RWS_Tarot_04_Emperor.jpg",
+    image: "/cards/emperor.png",
     role: "土台を作る力",
     message: "現実を整え、安定した形へ導く責任感と実行力があります。"
   },
   5: {
     name: "教皇",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/RWS_Tarot_05_Hierophant.jpg/320px-RWS_Tarot_05_Hierophant.jpg",
+    image: "/cards/hierophant.png",
     role: "導く力",
     message: "経験や価値観を通して、人に安心や学びを渡していく役割があります。"
   },
   6: {
     name: "恋人たち",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/TheLovers.jpg/320px-TheLovers.jpg",
+    image: "/cards/lovers.png",
     role: "選び取る力",
     message: "大切なものを見極め、自分らしい愛し方や関わり方を育てていく人です。"
   },
   7: {
     name: "戦車",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/RWS_Tarot_07_Chariot.jpg/320px-RWS_Tarot_07_Chariot.jpg",
+    image: "/cards/chariot.png",
     role: "進む力",
     message: "迷いがあっても前へ進もうとする推進力と集中力があります。"
   },
   8: {
     name: "力",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/RWS_Tarot_08_Strength.jpg/320px-RWS_Tarot_08_Strength.jpg",
+    image: "/cards/strength.png",
     role: "やさしい強さ",
     message: "無理やりではなく、愛や信頼で物事を整えていく力があります。"
   },
   9: {
     name: "隠者",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/RWS_Tarot_09_Hermit.jpg/320px-RWS_Tarot_09_Hermit.jpg",
+    image: "/cards/hermit.png",
     role: "深く見つめる力",
     message: "ひとりの時間の中で本質を見つけ、静かな知恵を育てていく人です。"
   },
   10: {
     name: "運命の輪",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg/320px-RWS_Tarot_10_Wheel_of_Fortune.jpg",
+    image: "/cards/wheel-of-fortune.png",
     role: "流れを変える力",
     message: "転機や変化を通して、自分や周囲の世界を動かしていく役割があります。"
   },
   11: {
     name: "正義",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/RWS_Tarot_11_Justice.jpg/320px-RWS_Tarot_11_Justice.jpg",
+    image: "/cards/justice.png",
     role: "整える力",
     message: "感情だけでなく、誠実さやバランスを大切にしながら進める人です。"
   },
   12: {
     name: "吊るされた男",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/RWS_Tarot_12_Hanged_Man.jpg/320px-RWS_Tarot_12_Hanged_Man.jpg",
+    image: "/cards/hanged-man.png",
     role: "見方を変える力",
     message: "立ち止まる時間の中で、新しい意味や価値を見つけられる人です。"
   },
   13: {
     name: "死神",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/RWS_Tarot_13_Death.jpg/320px-RWS_Tarot_13_Death.jpg",
+    image: "/cards/death.png",
     role: "終わらせて生まれ変わる力",
     message: "不要になったものを手放し、新しい流れへ進む変容力があります。"
   },
   14: {
     name: "節制",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/RWS_Tarot_14_Temperance.jpg/320px-RWS_Tarot_14_Temperance.jpg",
+    image: "/cards/temperance.png",
     role: "調和させる力",
     message: "違うもの同士をつなぎ、やさしくバランスを取っていくことができます。"
   },
   15: {
     name: "悪魔",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/RWS_Tarot_15_Devil.jpg/320px-RWS_Tarot_15_Devil.jpg",
+    image: "/cards/devil.png",
     role: "欲望を見抜く力",
     message: "強い惹かれや執着を通して、本当のテーマに気づいていく人です。"
   },
   16: {
     name: "塔",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/RWS_Tarot_16_Tower.jpg/320px-RWS_Tarot_16_Tower.jpg",
+    image: "/cards/tower.png",
     role: "壊して真実に戻す力",
     message: "思い込みを超え、本音の世界に戻るための大きな変化を起こせる人です。"
   },
   17: {
     name: "星",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/RWS_Tarot_17_Star.jpg/320px-RWS_Tarot_17_Star.jpg",
+    image: "/cards/star.png",
     role: "希望を灯す力",
     message: "傷ついたあとでも、自分や誰かに光を思い出させる魅力があります。"
   },
   18: {
     name: "月",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/RWS_Tarot_18_Moon.jpg/320px-RWS_Tarot_18_Moon.jpg",
+    image: "/cards/moon.png",
     role: "見えない心を感じる力",
     message: "曖昧さや不安の中にも、まだ言葉にならない感情を見つけられる人です。"
   },
   19: {
     name: "太陽",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/RWS_Tarot_19_Sun.jpg/320px-RWS_Tarot_19_Sun.jpg",
+    image: "/cards/sun.png",
     role: "明るさを広げる力",
     message: "素直さや生命力で、人の心を軽くし、前向きな空気を広げる人です。"
   },
   20: {
     name: "審判",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/RWS_Tarot_20_Judgement.jpg/320px-RWS_Tarot_20_Judgement.jpg",
+    image: "/cards/judgement.png",
     role: "目覚めの力",
     message: "過去の経験を糧にして、新しい自分へ呼び起こされる人生テーマがあります。"
   },
   21: {
     name: "世界",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/RWS_Tarot_21_World.jpg/320px-RWS_Tarot_21_World.jpg",
+    image: "/cards/world.png",
     role: "完成させる力",
     message: "ひとつの流れを統合し、次の世界へ自然に進んでいく力があります。"
   }
@@ -400,8 +399,8 @@ export default function Page() {
                 表示される解釈メッセージは当サイト独自の表現です。
               </p>
               <p className="mt-2">
-                ※ 現在の画像は試作表示用です。実運用では、オリジナル画像または商用利用可能な素材への差し替えをおすすめします。
-              </p>
+  ※ 一部のカード画像には、amateras.blogを参考にしたパブリックドメインのRider-Waite-Smith画像を使用しています。今後、順次オリジナル画像へ差し替え予定です。
+</p>
             </div>
           </div>
         )}
