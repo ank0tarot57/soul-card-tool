@@ -291,8 +291,11 @@ export default function Page() {
             ソウルカード診断
           </h1>
           <p className="max-w-2xl text-sm leading-6 text-slate-600 md:text-base md:leading-7">
-            生年月日から、外にあらわれやすい資質を示す Personality Card と、心の奥にあるテーマを示す Soul Card を表示します。
-          </p>
+  タロットは、未来を言い当てるためだけのものではなく、心を映し、自分の本音に出会うためのもの。<br />
+  このソウルカード診断では、生年月日から導かれるカードを通して、あなたが生まれ持った魅力や魂のテーマをやさしく読み解いていきます。<br />
+  恋愛に揺れる夜も、生きにくさの中で自分をうまく愛せない日も、カードはあなたの心の奥にある声を静かに映し出してくれるでしょう。<br />
+  今の自分を責めるためではなく、もっと深く理解し、やさしく愛していくためのヒントとして受け取ってください。
+</p>
         </div>
 
         <div className="grid gap-4 rounded-3xl bg-rose-50/70 p-4 sm:p-5 md:grid-cols-[1fr_auto] md:items-end">
