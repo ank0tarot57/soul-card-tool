@@ -286,17 +286,17 @@ export default function Page() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-rose-50 via-pink-50 to-orange-50 px-4 py-5 text-slate-800 sm:px-5 md:p-6">
       <div className="mx-auto max-w-5xl rounded-[2rem] bg-white/90 p-4 shadow-xl sm:p-5 md:p-10">
-        <div className="mb-6 md:mb-8">
-          <h1 className="mb-2 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
-            ソウルカード診断
-          </h1>
-          <p className="max-w-2xl text-sm leading-6 text-slate-600 md:text-base md:leading-7">
-  タロットは、未来を言い当てるためだけのものではなく、心を映し、自分の本音に出会うためのもの。
-  このソウルカード診断では、生年月日から導かれるカードを通して、あなたが生まれ持った魅力や魂のテーマをやさしく読み解いていきます。
-  恋愛に揺れる夜も、生きにくさの中で自分をうまく愛せない日も、カードはあなたの心の奥にある声を静かに映し出してくれるでしょう。
-  今の自分を責めるためではなく、もっと深く理解し、やさしく愛していくためのヒントとして受け取ってください。
-</p>
-        </div>
+     <div className="mb-6 text-center md:mb-8">
+  <h1 className="mb-4 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
+    ソウルカード診断
+  </h1>
+  <p className="mx-auto max-w-3xl text-sm leading-7 text-slate-600 md:text-base md:leading-8 [text-align:justify] [text-justify:inter-ideograph]">
+    タロットは、未来を言い当てるためだけのものではなく、心を映し、自分の本音に出会うためのもの。<br />
+    このソウルカード診断では、生年月日から導かれるカードを通して、あなたが生まれ持った魅力や魂のテーマをやさしく読み解いていきます。<br />
+    恋愛に揺れる夜も、生きにくさの中で自分をうまく愛せない日も、カードはあなたの心の奥にある声を静かに映し出してくれるでしょう。<br />
+    今の自分を責めるためではなく、もっと深く理解し、やさしく愛していくためのヒントとして受け取ってください。
+  </p>
+</div>
 
         <div className="grid gap-4 rounded-3xl bg-rose-50/70 p-4 sm:p-5 md:grid-cols-[1fr_auto] md:items-end">
           <div>
