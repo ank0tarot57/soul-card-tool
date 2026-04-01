@@ -23,8 +23,10 @@ const cardData = {
   3: {
   name: "女帝",
   image: "/cards/empress.png",
+  role: "育む力",
+  message: "安心感や豊かさを生み出し、人や物事をあたたかく育てていく資質があります。",
   personality: {
-   catchCopy: "【テスト】やわらかさと豊かさで人を包む人",
+    catchCopy: "やわらかさと豊かさで人を包む人",
     charm:
       "あなたは、安心感やぬくもりを人に与えやすい人です。一緒にいるとほっとすると感じられやすく、自然体なのに華やかさもあります。",
     daily:
@@ -278,24 +280,7 @@ function InfoRow({
 
 export default function Page() {
   const [birthdate, setBirthdate] = useState("");
-  const [result, setResult] = useState<null | {
-    total: number;
-    personalityNumber: number;
-    soulNumber: number;
-    personalityCard: {
-      name: string;
-      image: string;
-      role: string;
-      message: string;
-    };
-    soulCard: {
-      name: string;
-      image: string;
-      role: string;
-      message: string;
-    };
-    combinedMessage: string;
-  }>(null);
+  const [result, setResult] = useState<any>(null);
   const [error, setError] = useState("");
 
   function handleDiagnose() {
