@@ -367,7 +367,7 @@ export default function Page() {
                 <img
                   src={result.soulCard.image}
                   alt={result.soulCard.name}
-                  className="h-[280px] w-full object-cover sm:h-[320px] md:h-[360px]"
+                 className="h-[280px] w-full object-contain bg-slate-50 p-3 sm:h-[320px] md:h-[360px]"
                 />
                 <div className="p-4 sm:p-5">
                   <h2 className="mt-1 text-xl font-bold sm:text-2xl">
