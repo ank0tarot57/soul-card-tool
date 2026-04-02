@@ -1065,7 +1065,7 @@ export default function Page() {
             </div>
 
             <div className="rounded-3xl bg-slate-50 p-4 sm:p-5 md:p-6">
-              <p className="text-sm text-slate-500">2枚の組み合わせメッセージ</p>
+              <p className="text-sm text-slate-500">2枚のカードが映す、あなたらしさ</p>
               <p className="mt-3 text-sm leading-7 text-slate-700 md:text-base md:leading-8">
                 {result.combinedMessage}
               </p>
