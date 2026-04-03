@@ -17,8 +17,8 @@ export const metadata: Metadata = {
   description:
     "生年月日から導かれるパーソナルカードとソウルカード2枚で、あなたが生まれ持った魅力と魂のテーマをタロットでやさしく読み解きます。桜餅あん子の生年月日タロット占い。",
   icons: {
-    icon: "/favicon.ico",          // ブラウザタブのアイコン
-    apple: "/apple-icon.png",      // iPhoneホーム画面追加時のアイコン
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
   },
 };
 
