@@ -960,21 +960,21 @@ export default function Page() {
       <div className="anko-bg relative">
         {/* 花びらデコ */}
         {([
-          { char: "❀",  left: 5,  dur: 11, delay: 0,  size: 22, color: "#e991b0" },
-          { char: "✿",  left: 18, dur: 16, delay: 3,  size: 18, color: "#d4799a" },
-          { char: "❀",  left: 30, dur: 13, delay: 7,  size: 20, color: "#c2637a" },
-          { char: "❁",  left: 44, dur: 18, delay: 1,  size: 24, color: "#e991b0" },
-          { char: "✿",  left: 57, dur: 12, delay: 5,  size: 18, color: "#d4799a" },
-          { char: "❀",  left: 68, dur: 15, delay: 9,  size: 22, color: "#c2637a" },
-          { char: "❁",  left: 79, dur: 14, delay: 2,  size: 16, color: "#e991b0" },
-          { char: "✾",  left: 90, dur: 17, delay: 6,  size: 20, color: "#d4799a" },
-          { char: "✿",  left: 13, dur: 19, delay: 11, size: 15, color: "#c2637a" },
-          { char: "❀",  left: 35, dur: 10, delay: 4,  size: 26, color: "#e991b0" },
-          { char: "❃",  left: 52, dur: 20, delay: 8,  size: 17, color: "#d4799a" },
-          { char: "❁",  left: 74, dur: 13, delay: 13, size: 21, color: "#c2637a" },
-          { char: "🍡", left: 25, dur: 22, delay: 15, size: 28, color: "#e991b0", mochi: true },
-          { char: "🍡", left: 62, dur: 26, delay: 30, size: 26, color: "#d4799a", mochi: true },
-          { char: "🍡", left: 83, dur: 24, delay: 50, size: 30, color: "#c2637a", mochi: true },
+          { char: "❀",  left: 5,  dur: 11, delay: -4,  size: 22, color: "#e991b0" },
+          { char: "✿",  left: 18, dur: 16, delay: -10, size: 18, color: "#d4799a" },
+          { char: "❀",  left: 30, dur: 13, delay: -2,  size: 20, color: "#c2637a" },
+          { char: "❁",  left: 44, dur: 18, delay: -14, size: 24, color: "#e991b0" },
+          { char: "✿",  left: 57, dur: 12, delay: -7,  size: 18, color: "#d4799a" },
+          { char: "❀",  left: 68, dur: 15, delay: -12, size: 22, color: "#c2637a" },
+          { char: "❁",  left: 79, dur: 14, delay: -1,  size: 16, color: "#e991b0" },
+          { char: "✾",  left: 90, dur: 17, delay: -9,  size: 20, color: "#d4799a" },
+          { char: "✿",  left: 13, dur: 19, delay: -16, size: 15, color: "#c2637a" },
+          { char: "❀",  left: 35, dur: 10, delay: -5,  size: 26, color: "#e991b0" },
+          { char: "❃",  left: 52, dur: 20, delay: -18, size: 17, color: "#d4799a" },
+          { char: "❁",  left: 74, dur: 13, delay: -8,  size: 21, color: "#c2637a" },
+          { char: "🍡", left: 25, dur: 22, delay: -11, size: 28, color: "#e991b0" },
+          { char: "🍡", left: 62, dur: 26, delay: -20, size: 26, color: "#d4799a" },
+          { char: "🍡", left: 83, dur: 24, delay: -6,  size: 30, color: "#c2637a" },
         ]).map((p, i) => (
           <div key={i} className="petal-deco" aria-hidden="true"
             style={{
