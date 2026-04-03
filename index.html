@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>タロット ソウルカード & パーソナルカード</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+      background: #0d0d1a;
+      color: #e8e0f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 16px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      letter-spacing: 0.1em;
+      color: #c9a8ff;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 0.8rem;
+      color: #9980bb;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .card-input {
+      background: #1a1a2e;
+      border: 1px solid #3a2d5a;
+      border-radius: 16px;
+      padding: 28px 32px;
+      width: 100%;
+      max-width: 420px;
+      margin-bottom: 32px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.8rem;
+      color: #9980bb;
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    input[type="date"] {
+      width: 100%;
+      background: #0d0d1a;
+      border: 1px solid #3a2d5a;
+      border-radius: 10px;
+      color: #e8e0f0;
+      font-size: 1.1rem;
+      padding: 12px 16px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input[type="date"]:focus {
+      border-color: #c9a8ff;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 14px;
+      background: linear-gradient(135deg, #7b4fc9, #4a3080);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1rem;
+      font-family: inherit;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    button:hover { opacity: 0.85; }
+
+    .results {
+      width: 100%;
+      max-width: 420px;
+      display: none;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .result-card {
+      background: #1a1a2e;
+      border: 1px solid #3a2d5a;
+      border-radius: 16px;
+      padding: 24px 28px;
+    }
+
+    .result-card .card-type {
+      font-size: 0.75rem;
+      color: #9980bb;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .arcana-number {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #c9a8ff;
+      line-height: 1;
+    }
+
+    .arcana-name {
+      font-size: 1.3rem;
+      color: #e8e0f0;
+      margin-top: 6px;
+      margin-bottom: 4px;
+    }
+
+    .arcana-name-en {
+      font-size: 0.8rem;
+      color: #6e5d8a;
+    }
+
+    .divider {
+      width: 32px;
+      height: 1px;
+      background: #3a2d5a;
+      margin: 14px 0;
+    }
+
+    .keyword {
+      font-size: 0.82rem;
+      color: #b09fd0;
+      line-height: 1.7;
+    }
+
+    .calc-detail {
+      font-size: 0.72rem;
+      color: #6e5d8a;
+      margin-top: 12px;
+    }
+
+    .secondary-card {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px dashed #3a2d5a;
+    }
+
+    .secondary-label {
+      font-size: 0.7rem;
+      color: #7a6a9a;
+      margin-bottom: 6px;
+    }
+
+    .secondary-info {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .secondary-number {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #9a78d4;
+    }
+
+    .secondary-name {
+      font-size: 1rem;
+      color: #c9b8e8;
+    }
+
+    .stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle var(--d) ease-in-out infinite alternate;
+      opacity: var(--o);
+    }
+
+    @keyframes twinkle {
+      from { opacity: var(--o); }
+      to   { opacity: calc(var(--o) * 0.2); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<h1>✦ タロット 数秘カード</h1>
+<p class="subtitle">Soul Card & Personal Card Calculator</p>
+
+<div class="card-input">
+  <label for="birthdate">生年月日</label>
+  <input type="date" id="birthdate" />
+  <button onclick="calculate()">カードを引く</button>
+</div>
+
+<div class="results" id="results">
+  <div class="result-card" id="soul-result"></div>
+  <div class="result-card" id="personal-result"></div>
+</div>
+
+<script>
+const ARCANA = [
+  { num: 0,  name: '愚者',         en: 'The Fool',           keyword: '自由・純粋さ・新しい始まり・冒険・可能性' },
+  { num: 1,  name: '魔術師',       en: 'The Magician',       keyword: '意志・創造力・技術・行動・自己実現' },
+  { num: 2,  name: '女教皇',       en: 'The High Priestess', keyword: '直感・神秘・内なる知恵・潜在意識' },
+  { num: 3,  name: '女帝',         en: 'The Empress',        keyword: '豊かさ・母性・創造・感性・自然' },
+  { num: 4,  name: '皇帝',         en: 'The Emperor',        keyword: '権威・構造・安定・父性・リーダーシップ' },
+  { num: 5,  name: '教皇',         en: 'The Hierophant',     keyword: '伝統・信仰・導き・制度・精神的な学び' },
+  { num: 6,  name: '恋人たち',     en: 'The Lovers',         keyword: '選択・愛・調和・価値観・パートナーシップ' },
+  { num: 7,  name: '戦車',         en: 'The Chariot',        keyword: '意志・勝利・自己制御・前進・目標達成' },
+  { num: 8,  name: '力',           en: 'Strength',           keyword: '内なる強さ・勇気・忍耐・情熱・柔らかな力' },
+  { num: 9,  name: '隠者',         en: 'The Hermit',         keyword: '内省・孤独・探求・知恵・導き' },
+  { num: 10, name: '運命の輪',     en: 'Wheel of Fortune',   keyword: '転換・サイクル・チャンス・運命・変化' },
+  { num: 11, name: '正義',         en: 'Justice',            keyword: '公正・バランス・真実・責任・因果' },
+  { num: 12, name: '吊るされた男', en: 'The Hanged Man',     keyword: '停止・視点の転換・犠牲・解放・待機' },
+  { num: 13, name: '死神',         en: 'Death',              keyword: '終わりと始まり・変容・手放し・再生' },
+  { num: 14, name: '節制',         en: 'Temperance',         keyword: '調和・バランス・統合・癒し・流れ' },
+  { num: 15, name: '悪魔',         en: 'The Devil',          keyword: '執着・物質・束縛・欲望・影' },
+  { num: 16, name: '塔',           en: 'The Tower',          keyword: '崩壊・変革・覚醒・衝撃・解放' },
+  { num: 17, name: '星',           en: 'The Star',           keyword: '希望・信頼・癒し・インスピレーション・光' },
+  { num: 18, name: '月',           en: 'The Moon',           keyword: '幻想・不安・潜在意識・夢・直感' },
+  { num: 19, name: '太陽',         en: 'The Sun',            keyword: '喜び・活力・成功・明るさ・自信' },
+  { num: 20, name: '審判',         en: 'Judgement',          keyword: '覚醒・再生・召喚・評価・変容' },
+  { num: 21, name: '世界',         en: 'The World',          keyword: '完成・統合・達成・循環・全体性' },
+];
+
+function getArcana(n) {
+  // n は 1-21、または 22 → 0(愚者)
+  const idx = (n === 22) ? 0 : n;
+  return ARCANA[idx];
+}
+
+function digitSum(n) {
+  return String(n).split('').reduce((a, d) => a + parseInt(d), 0);
+}
+
+function reduceToArcana(total) {
+  // 22以下になるまで足す。22 → 愚者扱い
+  let n = total;
+  while (n > 22) n = digitSum(n);
+  return n;
+}
+
+function calculate() {
+  const val = document.getElementById('birthdate').value;
+  if (!val) { alert('生年月日を入力してください'); return; }
+
+  const [year, month, day] = val.split('-').map(Number);
+
+  // --- Soul Card ---
+  const birthSum = digitSum(year) + digitSum(month) + digitSum(day);
+  // まず2桁合計
+  let soulPrimary = birthSum;
+  while (soulPrimary > 22) soulPrimary = digitSum(soulPrimary);
+
+  // セカンダリ（2桁の場合 → さらに縮約）
+  let soulSecondary = null;
+  if (soulPrimary >= 10) {
+    soulSecondary = digitSum(soulPrimary);
+    if (soulSecondary === 0) soulSecondary = 22;
+  }
+
+  // --- Personal Card (今年) ---
+  const thisYear = new Date().getFullYear();
+  const personalSum = digitSum(thisYear) + digitSum(month) + digitSum(day);
+  let personalPrimary = personalSum;
+  while (personalPrimary > 22) personalPrimary = digitSum(personalPrimary);
+  let personalSecondary = null;
+  if (personalPrimary >= 10) {
+    personalSecondary = digitSum(personalPrimary);
+    if (personalSecondary === 0) personalSecondary = 22;
+  }
+
+  renderResult('soul-result',     'ソウルカード', '魂のテーマ・人生の本質', soulPrimary,     soulSecondary,     `生年月日の全桁の和 ${birthSum} → ${soulPrimary}`);
+  renderResult('personal-result', `パーソナルカード (${thisYear}年)`, 'その年のテーマ・流れ', personalPrimary, personalSecondary, `誕生日 + ${thisYear}年の和 ${personalSum} → ${personalPrimary}`);
+
+  document.getElementById('results').style.display = 'flex';
+}
+
+function renderResult(id, type, typeDesc, primary, secondary, detail) {
+  const a = getArcana(primary);
+  const numDisplay = (primary === 22) ? 'Ⅹ Ⅹ Ⅱ' : toRoman(primary);
+
+  let html = `
+    <div class="card-type">${type} — ${typeDesc}</div>
+    <div class="arcana-number">${numDisplay}</div>
+    <div class="arcana-name">${a.name}</div>
+    <div class="arcana-name-en">${a.en}</div>
+    <div class="divider"></div>
+    <div class="keyword">${a.keyword}</div>
+    <div class="calc-detail">${detail}</div>
+  `;
+
+  if (secondary !== null) {
+    const b = getArcana(secondary);
+    html += `
+      <div class="secondary-card">
+        <div class="secondary-label">ペアカード（縮約）</div>
+        <div class="secondary-info">
+          <div class="secondary-number">${toRoman(secondary)}</div>
+          <div>
+            <div class="secondary-name">${b.name}</div>
+            <div class="arcana-name-en" style="font-size:0.72rem">${b.en}</div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  document.getElementById(id).innerHTML = html;
+}
+
+const ROMAN = ['', 'Ⅰ','Ⅱ','Ⅲ','Ⅳ','Ⅴ','Ⅵ','Ⅶ','Ⅷ','Ⅸ','Ⅹ',
+                'Ⅺ','Ⅻ','XIII','XIV','XV','XVI','XVII','XVIII','XIX','XX','XXI'];
+function toRoman(n) {
+  if (n === 0 || n === 22) return '0';
+  return ROMAN[n] || String(n);
+}
+
+// 星空背景
+(function() {
+  const container = document.getElementById('stars');
+  for (let i = 0; i < 80; i++) {
+    const s = document.createElement('div');
+    const size = Math.random() * 2 + 0.5;
+    s.className = 'star';
+    s.style.cssText = `
+      width:${size}px; height:${size}px;
+      top:${Math.random()*100}%;
+      left:${Math.random()*100}%;
+      --d:${(Math.random()*3+2).toFixed(1)}s;
+      --o:${(Math.random()*0.6+0.2).toFixed(2)};
+    `;
+    container.appendChild(s);
+  }
+})();
+</script>
+</body>
+</html>
