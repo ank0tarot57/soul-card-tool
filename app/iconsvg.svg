@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <!-- 背景（ダークモードでも色固定） -->
+  <circle cx="96" cy="96" r="95" fill="#fce4ec" stroke="#e991b0" stroke-width="4"/>
+
+  <!-- 花びら 5枚 -->
+  <ellipse cx="96" cy="38" rx="16" ry="28" fill="#e991b0" transform="rotate(0,96,96)"/>
+  <ellipse cx="96" cy="38" rx="16" ry="28" fill="#d4799a" transform="rotate(72,96,96)"/>
+  <ellipse cx="96" cy="38" rx="16" ry="28" fill="#e991b0" transform="rotate(144,96,96)"/>
+  <ellipse cx="96" cy="38" rx="16" ry="28" fill="#d4799a" transform="rotate(216,96,96)"/>
+  <ellipse cx="96" cy="38" rx="16" ry="28" fill="#e991b0" transform="rotate(288,96,96)"/>
+
+  <!-- 花びらの切れ込み（桜らしさ） -->
+  <ellipse cx="96" cy="38" rx="3" ry="7" fill="#fce4ec" transform="rotate(0,96,96)"/>
+  <ellipse cx="96" cy="38" rx="3" ry="7" fill="#fce4ec" transform="rotate(72,96,96)"/>
+  <ellipse cx="96" cy="38" rx="3" ry="7" fill="#fce4ec" transform="rotate(144,96,96)"/>
+  <ellipse cx="96" cy="38" rx="3" ry="7" fill="#fce4ec" transform="rotate(216,96,96)"/>
+  <ellipse cx="96" cy="38" rx="3" ry="7" fill="#fce4ec" transform="rotate(288,96,96)"/>
+
+  <!-- 花芯 -->
+  <circle cx="96" cy="96" r="18" fill="#fce4ec"/>
+  <circle cx="96" cy="96" r="13" fill="#f8bbd9"/>
+
+  <!-- おしべ -->
+  <circle cx="96" cy="80" r="3.5" fill="#c2637a"/>
+  <circle cx="96" cy="80" r="3.5" fill="#c2637a" transform="rotate(72,96,96)"/>
+  <circle cx="96" cy="80" r="3.5" fill="#c2637a" transform="rotate(144,96,96)"/>
+  <circle cx="96" cy="80" r="3.5" fill="#c2637a" transform="rotate(216,96,96)"/>
+  <circle cx="96" cy="80" r="3.5" fill="#c2637a" transform="rotate(288,96,96)"/>
+</svg>
