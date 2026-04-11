@@ -34,14 +34,6 @@ type CardData = {
   soul: SoulDetail;
 };
 
-type CombinedMaterial = {
-  id: number;
-  personalityCharm: string;
-  soulTheme: string;
-  combinedIdentity: string;
-  softEndings: [string, string, string, string];
-};
-
 // ─── カードデータ ──────────────────────────────────────────────────────────────
 const cardDataArray: CardData[] = [
   {
@@ -678,37 +670,15 @@ function calculateCards(dateString: string) {
   return { total, personalityNumber, soulNumber, personalityCard, soulCard };
 }
 
-// ─── コンバインド素材データ ────────────────────────────────────────────────────
-const combinedData: CombinedMaterial[] = [
-  { id: 0, personalityCharm: "型にはまらない自由さで空気を軽くする魅力", soulTheme: "まだ見ぬ可能性に心をひらき、自分の感覚を信じて進むこと", combinedIdentity: "軽やかさと素直さで新しい流れを呼び込めるところ", softEndings: ["答えが見えなくても、心が動く方向を信じてみてください。", "あなたの自由さは、未来をひらく才能でもあります。", "まだ定まらない自分も、そのままで大丈夫です。", "枠におさまらない感覚こそ、あなたらしさです。"] },
-  { id: 1, personalityCharm: "思いやアイデアを言葉や行動に変えていける魅力", soulTheme: "自分の力を使って可能性を現実にしていくこと", combinedIdentity: "ひらめきと行動力を結びつけて道を切りひらけるところ", softEndings: ["あなたの中にある力は、もう動き出していいものです。", "思いつきではなく、才能として信じて大丈夫です。", "あなたの言葉には現実を動かす力があります。", "小さな一歩でも、形にした瞬間から流れは変わります。"] },
-  { id: 2, personalityCharm: "静かな知性と感受性で本質を感じ取れる魅力", soulTheme: "外の声に流されず、自分の内側の感覚を信じること", combinedIdentity: "言葉にならない想いや違和感まで丁寧に受け取れるところ", softEndings: ["急いで答えを出さなくても、あなたの中の感覚はちゃんと育っています。", "静けさの中にある直感を、置き去りにしないでください。", "わかりにくい感覚ほど、あなたにとって大切な真実かもしれません。", "見えないものを感じ取れることは、あなたの強さでもあります。"] },
-  { id: 3, personalityCharm: "あたたかさと安心感で人や場を満たしていける魅力", soulTheme: "愛し、受け取り、豊かさを育てていくこと", combinedIdentity: "やさしさと包容力で人の心をほぐし、魅力を咲かせられるところ", softEndings: ["与えることと同じくらい、受け取ることも大切にしていいのです。", "あなたのあたたかさは、まず自分にも向けてあげてください。", "満たされることを、自分に許してあげて大丈夫です。", "愛を育てる力は、あなた自身を癒やす力にもなります。"] },
-  { id: 4, personalityCharm: "落ち着きと安定感で人に安心を与えられる魅力", soulTheme: "自分の土台を整え、人生を自分の力で築いていくこと", combinedIdentity: "強さと責任感をやさしさに変えながら関係を支えられるところ", softEndings: ["しっかりしようとする気持ちの奥にある本音も、大切にしてあげてください。", "守るだけでなく、頼ることもあなたの強さです。", "あなたが築こうとしてきたものには、ちゃんと意味があります。", "土台を整えることは、心を守ることにもつながっています。"] },
-  { id: 5, personalityCharm: "誠実さと安心感で人の心を落ち着かせる魅力", soulTheme: "学びや経験を通して、自分と人を支える意味を見つけること", combinedIdentity: "信頼や言葉を通して人に安心と気づきを届けられるところ", softEndings: ["あなたが積み重ねてきたものは、誰かの支えにもなっていきます。", "正しさだけでなく、あなた自身の本音も大切にしてください。", "人に向ける誠実さを、自分にも向けてあげてください。", "導く力は、やさしさと一緒に使って大丈夫です。"] },
-  { id: 6, personalityCharm: "人との距離をやわらかく縮め、心を通わせられる魅力", soulTheme: "つながりの中でも自分の本音を大切にすること", combinedIdentity: "やさしさと親しみやすさで深い関係を育てていけるところ", softEndings: ["誰かとつながるときこそ、自分の本音も置き去りにしないでください。", "愛されるために無理をしなくても大丈夫です。", "あなたのやさしさは、心を通わせるための力です。", "選ぶことは、誰かを傷つけることではなく自分を守ることでもあります。"] },
-  { id: 7, personalityCharm: "行動力と推進力で流れを前に進められる魅力", soulTheme: "迷いや揺れがあっても、自分の意志で進むこと", combinedIdentity: "勢いだけではなく、意思の強さで現実を動かせるところ", softEndings: ["焦らなくて大丈夫です。あなたのペースで進んでも、ちゃんと前に進めます。", "立ち止まる時間も、進むための大切な準備です。", "あなたが進みたい方向を、自分で選んでいいのです。", "勢いの奥にある本音を、ちゃんと確かめてあげてください。"] },
-  { id: 8, personalityCharm: "やわらかな強さで人の気持ちを受けとめられる魅力", soulTheme: "怖れや不安を否定せず、やさしく扱っていくこと", combinedIdentity: "しなやかな強さで自分にも人にも向き合えるところ", softEndings: ["無理に強くならなくても、あなたの中にはもう十分な強さがあります。", "やさしさは、我慢ではなくあなたの意志でもあります。", "揺れる気持ちごと、まずは受けとめてあげてください。", "あなたのやわらかさは、弱さではなく力です。"] },
-  { id: 9, personalityCharm: "静かな深さで本質を見つめられる魅力", soulTheme: "周りの声よりも、自分の内側にある真実を見つけること", combinedIdentity: "落ち着いた視点と内省の深さで確かな気づきを育てられるところ", softEndings: ["急がなくても大丈夫です。あなたの答えは静かな場所で育っています。", "ひとりの時間は、あなたを置いていかないために必要な時間です。", "見つめ続けた先にある光を、信じてみてください。", "すぐに言葉にならない気持ちにも意味があります。"] },
-  { id: 10, personalityCharm: "変化の流れを受け取り、チャンスにつなげられる魅力", soulTheme: "巡りや変化の中で意味を見つけ、自分を見失わないこと", combinedIdentity: "流れが動くタイミングを感じ取り、新しい可能性を受け取れるところ", softEndings: ["止まって見える時期にも、流れはちゃんと動いています。", "思い通りにいかないことの中にも、受け取る意味があります。", "変化は、あなたを置き去りにするものではありません。", "巡りの中で出会うものを、やさしく受け取ってみてください。"] },
-  { id: 11, personalityCharm: "誠実さとバランス感覚で物事を整えられる魅力", soulTheme: "自分にとっての正しさを見つけ、心と現実のバランスをとること", combinedIdentity: "まっすぐさと冷静さで関係や気持ちを整えられるところ", softEndings: ["誰かの基準ではなく、あなたにとっての正しさを大切にしてください。", "心を守るための線を引くことも、やさしさのひとつです。", "自分の気持ちを公平に扱ってあげてください。", "整えることは、あなた自身を守ることでもあります。"] },
-  { id: 12, personalityCharm: "立ち止まる中で新しい見方を受け取れる魅力", soulTheme: "思い通りにいかない時間の中でも意味を見つけること", combinedIdentity: "待つ強さと視点の転換で深い気づきを育てられるところ", softEndings: ["動けない時間にも、あなたの心はちゃんと進んでいます。", "待つことが自己犠牲になっていないか、そっと確かめてみてください。", "今は受け取る時期だと、やさしく思い出してあげてください。", "止まって見える時間にも意味があります。"] },
-  { id: 13, personalityCharm: "古い流れを手放し、新しい始まりへ動かせる魅力", soulTheme: "終わりを受け入れながら、自分に合う生き方へ生まれ変わること", combinedIdentity: "決断と再生の力で本当の自分に近づいていけるところ", softEndings: ["終わらせることは、未来を閉ざすことではなく開くことでもあります。", "手放したあとにしか見えない光もあります。", "変わることを怖がる気持ちごと、大切にしてあげてください。", "終わりの先で、あなたはまた自分を取り戻していけます。"] },
-  { id: 14, personalityCharm: "ちょうどよいバランスで人や気持ちを整えられる魅力", soulTheme: "極端に偏らず、自分に合う心地よさを見つけていくこと", combinedIdentity: "やわらかな調和を生みながら人との関係を育てられるところ", softEndings: ["急に完璧にならなくても、少しずつ整っていけば大丈夫です。", "あなたにちょうどいい形を、焦らず見つけていきましょう。", "整える力は、心を回復させる力でもあります。", "無理のないやさしさを、自分にも向けてあげてください。"] },
-  { id: 15, personalityCharm: "強い引力と本音で人を惹きつける魅力", soulTheme: "自分を縛る欲望や執着に気づき、本当に望むものを見極めること", combinedIdentity: "情熱の強さを自分らしい魅力へ変えていけるところ", softEndings: ["苦しくなるほど求めてしまう気持ちの奥にも、大切な願いがあります。", "欲しい気持ちを責める前に、その奥の本音を見つめてみてください。", "強く惹かれるものの中に、心のテーマが隠れていることがあります。", "情熱は、やさしく扱えば大きな力になります。"] },
-  { id: 16, personalityCharm: "違和感をごまかさず、本音を揺り起こせる魅力", soulTheme: "古い思い込みや無理を壊し、本当の自分に戻ること", combinedIdentity: "変化の痛みを通して、真実へ向かう強さを持っているところ", softEndings: ["揺れることは、壊れているサインではなく目覚めの始まりかもしれません。", "崩れたものの中にも、やり直しの種があります。", "本音に戻ることを、怖がりすぎなくて大丈夫です。", "変化のあとにしか出会えない自分もいます。"] },
-  { id: 17, personalityCharm: "素直さと透明感で人の心に希望を灯せる魅力", soulTheme: "傷ついたあとも希望をあきらめず、自分らしさを回復していくこと", combinedIdentity: "やわらかな光で人にも自分にも希望を取り戻せるところ", softEndings: ["あなたの願いは、弱さではなく未来へ向かう光です。", "小さな希望を、どうか消さずに大切にしてください。", "ありのままの自分でいることが、あなたの魅力につながっています。", "やさしい光は、静かに周りを照らしています。"] },
-  { id: 18, personalityCharm: "空気や感情の揺れを繊細に感じ取り、やさしく寄り添える魅力", soulTheme: "揺れや曖昧さの中で、本当の気持ちを見つけていくこと", combinedIdentity: "感受性の深さで人の心に静かに寄り添えるところ", softEndings: ["揺れる日があるのは、あなたが弱いからではなく深く感じられる人だからです。", "不安の奥にある本音を、やさしく受けとめてあげてください。", "感じすぎる自分を責めなくても大丈夫です。", "曖昧さの中でも、あなたの心はちゃんと答えを知っています。"] },
-  { id: 19, personalityCharm: "明るさと素直さで人の心をあたためられる魅力", soulTheme: "自分の喜びや光を遠慮せず、そのまま生きること", combinedIdentity: "まっすぐな生命力で人との関係を明るく照らせるところ", softEndings: ["あなたが笑えること自体が、大切な才能です。", "光を隠しすぎず、あなたらしくいて大丈夫です。", "素直なよろこびを、自分にもっと許してあげてください。", "明るさは、無理につくるものではなくあなたの中にあるものです。"] },
-  { id: 20, personalityCharm: "大切な節目で本来の自分を呼び戻せる魅力", soulTheme: "過去の経験に意味を見つけ、何度でも自分を選び直すこと", combinedIdentity: "再出発の力で人生や関係を立て直していけるところ", softEndings: ["過去のあなたを責め続けなくても、ここからまた選び直せます。", "やり直しは、弱さではなく目覚めのひとつです。", "今のあなたに必要な声を、ちゃんと聞いてあげてください。", "呼び戻す力は、あなたの人生を生き直す力でもあります。"] },
-  { id: 21, personalityCharm: "自然体のままで満ちた安心感を与えられる魅力", soulTheme: "経験のすべてを統合し、今の自分を受け入れていくこと", combinedIdentity: "足りなさではなく満ち足りた自分で人とつながれるところ", softEndings: ["あなたの歩いてきた道は、ちゃんと今のあなたを形づくっています。", "もう欠けている自分として頑張り続けなくても大丈夫です。", "受け入れることは、立ち止まることではなく満ちていくことです。", "ここまで来た自分を、やさしく認めてあげてください。"] },
-];
-
-function buildCombinedMessage(personalityCard: CardData): string {
-  const material = combinedData.find((d) => d.id === personalityCard.id);
-  if (!material) return "";
-  const softEnding = material.softEndings[Math.floor(Math.random() * 4)];
-  return `あなたは、${material.personalityCharm}を持ちながら、\n心の奥では${material.soulTheme}を大切にしている人です。\nこの2つが重なることで、${material.combinedIdentity}が自然とあらわれます。\n${softEnding}`;
+function buildCombinedMessage(
+  personalityCard: CardData,
+  soulCard: CardData
+): string {
+  const sameCard = personalityCard.name === soulCard.name;
+  if (sameCard) {
+    return `あなたは「${personalityCard.role}」をまっすぐ体現しやすい人です。外から見える魅力と、心の奥にあるテーマが同じ方向を向いているため、自分らしさが伝わりやすいでしょう。`;
+  }
+  return `外からは「${personalityCard.role}」として見られやすく、心の奥では「${soulCard.role}」を大切に育てていく人です。人から見えるあなたと、本当のあなたの間にあるその奥行きが、あなたらしい魅力になります。`;
 }
 
 // ─── サブコンポーネント ─────────────────────────────────────────────────────────
@@ -764,7 +734,7 @@ export default function Page() {
     setError("");
     setResult({
       ...calculated,
-      combinedMessage: buildCombinedMessage(calculated.personalityCard),
+      combinedMessage: buildCombinedMessage(calculated.personalityCard, calculated.soulCard),
     });
   }
 
@@ -1227,6 +1197,57 @@ export default function Page() {
                 <p className="text-sm leading-8 md:text-base md:leading-9 text-center serif-font"
                   style={{ color: "var(--text-body)" }}>
                   {result.combinedMessage}
+                </p>
+              </div>
+
+              {/* LINE導線 */}
+              <div className="text-center py-8 px-6 sm:px-10 rounded-3xl"
+                style={{
+                  background: "linear-gradient(135deg, #fdf0f3 0%, #fce4ec 50%, #fdf6ee 100%)",
+                  border: "1px solid rgba(233,145,176,0.35)",
+                  boxShadow: "0 4px 24px rgba(194,99,122,0.1)",
+                }}>
+                <p className="text-xs tracking-[0.2em] mb-3 serif-font"
+                  style={{ color: "var(--sakura-deep)" }}>
+                  ❀ &nbsp; 無料鑑定 実施中 &nbsp; ❀
+                </p>
+                <p className="display-font text-2xl sm:text-3xl font-bold mb-5"
+                  style={{ color: "var(--an-dark)", letterSpacing: "0.06em" }}>
+                  無料鑑定、受け取りませんか？
+                </p>
+                <p className="text-sm leading-8 serif-font mb-6 mx-auto max-w-sm"
+                  style={{ color: "var(--text-body)" }}>
+                  あなたのパーソナルカード＆ソウルカードをもとに
+                  桜餅あん子が個別に鑑定します。<br />
+                  気になる恋愛・人間関係・生きづらさ…<br />
+                  カードが映すあなたのテーマを
+                  一緒に読み解いてみませんか？
+                </p>
+                <a
+                  href="https://lin.ee/zPTDwNML"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-block",
+                    background: "#06C755",
+                    color: "#ffffff",
+                    borderRadius: "999px",
+                    padding: "14px 36px",
+                    fontSize: "15px",
+                    fontWeight: "600",
+                    letterSpacing: "0.08em",
+                    textDecoration: "none",
+                    boxShadow: "0 4px 16px rgba(6,199,85,0.35)",
+                    fontFamily: "'Shippori Mincho', serif",
+                    transition: "opacity 0.2s",
+                  }}
+                  onMouseOver={e => (e.currentTarget.style.opacity = "0.88")}
+                  onMouseOut={e => (e.currentTarget.style.opacity = "1")}
+                >
+                  LINEで無料鑑定を受け取る
+                </a>
+                <p className="mt-4 text-xs" style={{ color: "var(--text-muted)" }}>
+                  ❀ 友だち追加後にメッセージを送ってください
                 </p>
               </div>
 
