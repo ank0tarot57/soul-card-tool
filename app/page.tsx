@@ -1246,9 +1246,7 @@ export default function Page() {
                 >
                   LINEで無料鑑定を受け取る
                 </a>
-                <p className="mt-4 text-xs" style={{ color: "var(--text-muted)" }}>
-                  ❀ 友だち追加後にメッセージを送ってください
-                </p>
+
               </div>
 
               {/* 免責 */}
