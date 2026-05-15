@@ -621,23 +621,24 @@ function sumDigits(num: number): number {
     .reduce((sum, n) => sum + n, 0);
 }
 
-function toMajorArcanaNumber(num: number): number {
-  if (num === 22) return 0;
-  return num;
-}
-
 function getPersonalityNumberFromTotal(total: number): number {
-  if (total <= 21) return toMajorArcanaNumber(total);
+  if (total <= 22) return total;
   if (total >= 100) {
     const firstTwoDigits = Number(String(total).slice(0, 2));
-    return toMajorArcanaNumber(firstTwoDigits);
+    return firstTwoDigits <= 22 ? firstTwoDigits : sumDigits(firstTwoDigits);
   }
-  return toMajorArcanaNumber(sumDigits(total));
+  const reduced = sumDigits(total);
+  return reduced <= 22 ? reduced : sumDigits(reduced);
 }
 
 function getSoulNumberFromPersonality(personalityNumber: number): number {
-  if (personalityNumber <= 9) return toMajorArcanaNumber(personalityNumber);
-  return toMajorArcanaNumber(sumDigits(personalityNumber));
+  if (personalityNumber <= 9) return personalityNumber;
+  return sumDigits(personalityNumber);
+}
+
+function getCardById(id: number): CardData | undefined {
+  if (id === 22) return cardMap.get(0);
+  return cardMap.get(id);
 }
 
 function calculateCards(dateString: string) {
@@ -662,8 +663,8 @@ function calculateCards(dateString: string) {
   const personalityNumber = getPersonalityNumberFromTotal(total);
   const soulNumber = getSoulNumberFromPersonality(personalityNumber);
 
-  const personalityCard = cardMap.get(personalityNumber);
-  const soulCard = cardMap.get(soulNumber);
+  const personalityCard = getCardById(personalityNumber);
+  const soulCard = getCardById(soulNumber);
 
   if (!personalityCard || !soulCard) return null;
 
