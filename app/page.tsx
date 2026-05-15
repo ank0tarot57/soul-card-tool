@@ -994,25 +994,33 @@ export default function Page() {
           {/* ── ヘッダー ── */}
           <header className="text-center mb-10 md:mb-14">
             <div className="mb-4">
-              <span className="main-header-tag">❀ 桜餅あん子の生年月日タロット占い ❀</span>
+              <span className="main-header-tag">❀ 桜餅あん子のバースデイカード診断 ❀</span>
             </div>
             <h1 className="display-font text-3xl sm:text-4xl md:text-[2.8rem] font-bold mb-3"
               style={{ color: "var(--an-dark)", letterSpacing: "0.08em", lineHeight: 1.4 }}>
-              パーソナルカード＆ソウルカード診断
+              バースデイカード診断
             </h1>
             <p className="serif-font text-sm tracking-[0.08em] mb-5"
               style={{ color: "var(--text-muted)" }}>
-              ─ 生年月日タロット占い ─
+              ─ 生年月日から見る、あなたの魅力と心のテーマ ─
             </p>
             <div className="hana-divider my-5 max-w-xs mx-auto"><span>❀</span></div>
-            <p className="mx-auto max-w-2xl text-sm leading-8 md:text-[0.95rem] md:leading-9"
+            <p className="mx-auto max-w-xl text-sm leading-8 md:text-[0.95rem] md:leading-9 mb-2"
               style={{ color: "var(--text-body)" }}>
-              タロットは、未来を言い当てるためだけのものではなく、心を映し、自分の本音に出会うためのもの。
-              生年月日から導かれるカードを通して、あなたが生まれ持った魅力と魂のテーマを、やさしく読み解いていきます。
+              バースデイカードとは、生年月日から導かれる<br />
+              「パーソナルカード」と「ソウルカード」の2枚のこと。
             </p>
-            <p className="mx-auto max-w-xl mt-4 text-sm leading-8"
+            <p className="mx-auto max-w-xl text-sm leading-8 md:text-[0.95rem] md:leading-9 mb-2"
+              style={{ color: "var(--text-body)" }}>
+              表に出やすい魅力や人との関わり方、<br />
+              そして心の奥でくり返し向き合うテーマを、<br />
+              タロットカードを通してやさしく読み解きます。
+            </p>
+            <p className="mx-auto max-w-xl mt-3 text-sm leading-8"
               style={{ color: "var(--text-muted)" }}>
-              恋愛に揺れる夜も、自分をうまく愛せない日も、カードはあなたの心の奥にある声を静かに映し出してくれるでしょう。
+              恋愛に揺れる時も、自分をうまく愛せない時も、<br />
+              このカードは、あなたが自分の心に戻るための<br />
+              小さなヒントを映してくれるでしょう。
             </p>
           </header>
 
